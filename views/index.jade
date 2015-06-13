@@ -1,5 +1,25 @@
 extends layout
 
+block js
+  if ENV_DEVELOPMENT
+    script(src='http://localhost:35729/livereload.js')
+  script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places')
+  script(src='/js/maps.js')
+
 block content
-  h1= title
-  p Welcome to #{title}
+  | Shop Name
+  p
+    input(type='text')
+
+  | Offer Title
+  p
+    input(type='text')
+
+  | Offer Description
+  p
+    input(type='text')
+
+  #map-canvas
+
+  p
+    input(type='button' value='Add Offer')

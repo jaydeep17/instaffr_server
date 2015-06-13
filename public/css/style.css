@@ -4,3 +4,8 @@ body {
 
 a {
   color: #00B7FF; }
+
+#map-canvas {
+  width: 600px;
+  height: 400px;
+  color: #ccc; }
