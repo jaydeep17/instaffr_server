@@ -93,7 +93,8 @@ function placeMarker(position, map) {
     g_marker = new google.maps.Marker({
         position: position,
         map: map,
-        draggable: true
+        draggable: true,
+        raiseOnDrag: false
     });
     map.panTo(position);
     console.log('lat', position.lat());
