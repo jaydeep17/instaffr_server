@@ -69,6 +69,10 @@ function initialize() {
         searchBox.setBounds(bounds);
     });
 
+    google.maps.event.addListener(map, 'click', function(e) {
+        placeMarker(e.latLng, map);
+    });
+
 
     // get current location and set it on the map
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -77,6 +81,29 @@ function initialize() {
         console.log('lat', lat);
         console.log('lng', lng);
         map.setCenter(new google.maps.LatLng(lat, lng));
+    });
+}
+
+var g_marker = null;
+
+function placeMarker(position, map) {
+    if (g_marker != null) {
+        g_marker.setMap(null);
+    }
+    g_marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        draggable: true
+    });
+    map.panTo(position);
+    console.log('lat', position.lat());
+    console.log('lng', position.lng());
+
+    google.maps.event.addListener(g_marker, 'dragend', function(event) {
+        var lat = g_marker.position.lat(); //event.latLng.lat();
+        var lng = g_marker.position.lng(); //event.latLng.lng();
+        console.log('lat', lat);
+        console.log('lng', lng);
     });
 }
 
