@@ -5,23 +5,38 @@ block js
     script(src='http://localhost:35729/livereload.js')
   script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places')
   script(src='/js/maps.js')
+  script(src='/components/jquery/dist/jquery.js')
 
 block content
-  | Shop Name
-  p
-    input(type='text')
+  form
+    | Shop Name
+    p
+      input(id='shopName' type='text')
 
-  | Offer Title
-  p
-    input(type='text')
+    | Offer Title
+    p
+      input(id='offerTitle' type='text')
 
-  | Offer Description
-  p
-    input(type='text')
+    | Offer Description
+    p
+      input(id='offerDesc' type='text')
 
-  .mapStuff
-    input(id="pac-input" class="controls" type="text" placeholder="Search Box")
-    #map-canvas
+    | Type
+    p
+      input(id='0' type='radio' name='type' value='0') 
+      label(for='0') Food
+      input(id='1' type='radio' name='type' value='1') 
+      label(for='1') Apparel
+      input(id='2' type='radio' name='type' value='2') 
+      label(for='2') HouseHold
 
-  p
-    input(type='button' value='Add Offer')
+    .mapStuff
+      input(id="pac-input" class="controls" type="text" placeholder="Search Box")
+      #map-canvas
+
+    p
+      input(id='btn' type='button' value='Add Offer')
+
+
+block post_body_js
+  script(src='/js/offer.js')
