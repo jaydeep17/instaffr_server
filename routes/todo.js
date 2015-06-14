@@ -1,8 +1,9 @@
 var express = require('express');
 var Datastore = require('nedb');
 var db = new Datastore({
-    filename: 'db/offers.db',
-    autoload: true
+    // in-memory database
+    // filename: 'db/offers.db',
+    // autoload: true
 });
 var router = express.Router();
 
